@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="http:code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+
+        $(() => {
+            let inpute = { bookid: $('#bookid').value };
+            let ajaxparameters = {
+                data: inpute,
+                url: 'http//localhost:99/event.html',
+                type: 'get',
+                datatype: 'json',
+                success: (datafromserver) => {
+                    if (datafromserver.status === true) {
+                        $('#bookname').val(datafromserver.book.bookname);
+                        $('#bookname').val(datafromserver.book.book_id);
+                        $('#bookname').val(datafromserver.book.price);
+                    }
+                    else {
+                        $('#bookid').text('book not found');
+                    }
+                }
+            }
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <form action="poc2" method="post">
+        <Br />bookid<input type="text" id="bookid" name="book_id" />
+
+        <Br />bookname<input type="text" id="bookname" name="bookname" />
+        <Br />price<input type="text" id="price" name="price" /><br>
+        <input type="submit" value="addbook" />
+    </form>
+
+</body>
+
+
+
+</html>
